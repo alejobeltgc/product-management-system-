@@ -13,5 +13,5 @@ public class ProductComposite {
     private int weight;
     private List<RecommendationSummary> recommendations;
     private List<ReviewSummary> reviews;
-    // private ServiceAddresses serviceAddresses;
+    private ServiceAddresses serviceAddresses;
 }
