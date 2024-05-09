@@ -4,6 +4,7 @@ import com.diamond.api.composite.product.*;
 import com.diamond.api.core.product.Product;
 import com.diamond.api.core.recommendation.Recommendation;
 import com.diamond.api.core.review.Review;
+import com.diamond.api.exceptions.NotFoundException;
 import com.diamond.composite.product.helpers.ProductCompositeIntegration;
 import com.diamond.util.http.ServiceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,11 @@ public class ProductCompositeController implements IProductCompositeController {
     @Override
     public ProductComposite getProduct(int productId) {
         Product product = integration.getProduct(productId);
+
+        if (product == null) {
+            throw new NotFoundException("No product found for productId: " + productId);
+        }
+
         List<Recommendation> recommendations = integration.getRecommendations(productId);
         List<Review> reviews = integration.getReviews(productId);
 
