@@ -26,6 +26,10 @@ public class RecommendationController implements IRecommendationController {
             throw new InvalidInputException("Invalid productId: " + productId);
         }
 
+        if (productId == 113) {
+            return new ArrayList<>();
+        }
+
         List<Recommendation> list = new ArrayList<>();
         list.add(new Recommendation(productId, 1, "Author 1", 1, "Content 1", serviceUtil.getServiceAddress()));
         list.add(new Recommendation(productId, 2, "Author 2", 2, "Content 2", serviceUtil.getServiceAddress()));

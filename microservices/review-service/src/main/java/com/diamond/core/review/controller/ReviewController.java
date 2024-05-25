@@ -26,6 +26,10 @@ public class ReviewController implements IReviewController {
             throw new InvalidInputException("Invalid productId: " + productId);
         }
 
+        if (productId == 213) {
+            return new ArrayList<>();
+        }
+
         List<Review> list = new ArrayList<>();
         list.add(new Review(productId, 1, "Author 1", "Subject 1", "Content 1", serviceUtil.getServiceAddress()));
         list.add(new Review(productId, 2, "Author 2", "Subject 2", "Content 2", serviceUtil.getServiceAddress()));
